@@ -1,11 +1,566 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>André's First Page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>André Doelle — Berlin</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0d0d12;
+      --surface: #16161f;
+      --surface2: #1e1e2a;
+      --gold: #c9a84c;
+      --gold-light: #e8c97a;
+      --blue: #5b9bd5;
+      --text: #e0dbd0;
+      --muted: #7a7585;
+      --radius: 12px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 2.5rem;
+      background: rgba(13, 13, 18, 0.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(201, 168, 76, 0.12);
+    }
+
+    .nav-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      letter-spacing: 0.06em;
+      color: var(--gold);
+    }
+
+    .lang-toggle {
+      display: flex;
+      border: 1px solid rgba(201, 168, 76, 0.5);
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .lang-btn {
+      background: none;
+      border: none;
+      color: var(--muted);
+      padding: 0.3rem 0.9rem;
+      cursor: pointer;
+      font-size: 0.78rem;
+      font-family: 'Inter', sans-serif;
+      letter-spacing: 0.1em;
+      transition: all 0.2s;
+    }
+
+    .lang-btn.active {
+      background: var(--gold);
+      color: var(--bg);
+      font-weight: 500;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      padding: 6rem 2.5rem 5rem;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('Pictures/beautiful background.jpeg');
+      background-size: cover;
+      background-position: center 20%;
+      filter: brightness(0.38);
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top,
+        rgba(13,13,18,1) 0%,
+        rgba(13,13,18,0.6) 40%,
+        rgba(13,13,18,0.1) 100%
+      );
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 680px;
+    }
+
+    .tagline {
+      font-size: 0.78rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-content h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 6.5vw, 5.5rem);
+      line-height: 1.05;
+      margin-bottom: 1.5rem;
+      color: #fff;
+    }
+
+    .hero-content .lead {
+      font-size: 1.05rem;
+      color: rgba(224, 219, 208, 0.78);
+      max-width: 520px;
+      line-height: 1.75;
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 5.5rem 2.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.4rem;
+    }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.9rem, 3.5vw, 2.6rem);
+      font-weight: 400;
+      margin-bottom: 2.8rem;
+      color: #fff;
+      line-height: 1.2;
+    }
+
+    /* ABOUT */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .about-photo {
+      width: 100%;
+      border-radius: var(--radius);
+      border: 1px solid rgba(201, 168, 76, 0.18);
+      display: block;
+    }
+
+    .about-text p {
+      margin-bottom: 1.3rem;
+      color: rgba(224, 219, 208, 0.82);
+      font-size: 0.97rem;
+    }
+
+    .about-text a {
+      color: var(--gold);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(201, 168, 76, 0.3);
+      transition: border-color 0.2s;
+    }
+
+    .about-text a:hover {
+      border-color: var(--gold);
+    }
+
+    /* GALLERY */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.1rem;
+    }
+
+    .gallery-item {
+      position: relative;
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--surface);
+      border: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .gallery-item.wide { grid-column: span 2; }
+
+    .gallery-item img {
+      width: 100%;
+      height: 290px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .gallery-item:hover img { transform: scale(1.05); }
+
+    .gallery-caption {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 0.9rem 1rem;
+      background: linear-gradient(transparent, rgba(0,0,0,0.75));
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.88);
+      letter-spacing: 0.02em;
+    }
+
+    /* WORK */
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.4rem;
+    }
+
+    .work-card {
+      background: var(--surface);
+      border: 1px solid rgba(201, 168, 76, 0.1);
+      border-radius: var(--radius);
+      padding: 2rem;
+      transition: border-color 0.25s;
+    }
+
+    .work-card:hover { border-color: rgba(201, 168, 76, 0.3); }
+
+    .work-card .icon { font-size: 1.6rem; margin-bottom: 1rem; }
+
+    .work-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 400;
+      color: var(--gold);
+      margin-bottom: 0.7rem;
+    }
+
+    .work-card p {
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.75;
+    }
+
+    .work-card a {
+      color: var(--gold-light);
+      text-decoration: none;
+    }
+
+    /* COMMUNITY */
+    .community-box {
+      background: var(--surface);
+      border: 1px solid rgba(201, 168, 76, 0.1);
+      border-radius: 16px;
+      padding: 2.8rem;
+    }
+
+    .community-box p {
+      color: rgba(224, 219, 208, 0.82);
+      font-size: 0.97rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .community-box p:last-child { margin-bottom: 0; }
+
+    .community-box a {
+      color: var(--gold);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(201, 168, 76, 0.3);
+    }
+
+    /* CONTACT */
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+      max-width: 420px;
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 1.1rem;
+      padding: 1.1rem 1.4rem;
+      background: var(--surface);
+      border: 1px solid rgba(201, 168, 76, 0.12);
+      border-radius: var(--radius);
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .contact-link:hover {
+      border-color: rgba(201, 168, 76, 0.5);
+      background: var(--surface2);
+    }
+
+    .contact-icon {
+      font-size: 1.1rem;
+      width: 24px;
+      text-align: center;
+      opacity: 0.8;
+    }
+
+    /* DIVIDER */
+    .divider {
+      border: none;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 3rem 2.5rem 4rem;
+      color: var(--muted);
+      font-size: 0.83rem;
+    }
+
+    footer a { color: var(--gold); text-decoration: none; }
+
+    .footer-sub {
+      margin-top: 0.6rem;
+      font-size: 0.73rem;
+      opacity: 0.45;
+    }
+
+    /* LANGUAGE VISIBILITY */
+    html[data-lang="en"] [data-de] { display: none; }
+    html[data-lang="de"] [data-en] { display: none; }
+
+    /* RESPONSIVE */
+    @media (max-width: 800px) {
+      nav { padding: 1rem 1.4rem; }
+      section { padding: 4rem 1.4rem; }
+      .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .about-photo { max-width: 240px; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-item.wide { grid-column: span 2; }
+      .work-grid { grid-template-columns: 1fr; }
+      .hero { padding: 5rem 1.4rem 3.5rem; }
+    }
+
+    @media (max-width: 480px) {
+      .gallery-grid { grid-template-columns: 1fr; }
+      .gallery-item.wide { grid-column: span 1; }
+      .gallery-item img { height: 240px; }
+      h2 { margin-bottom: 2rem; }
+    }
+  </style>
 </head>
 <body>
-  <h1>Hello World!</h1>
-  <p>This is André's first website. Published via GitHub Pages.</p>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-name">André Doelle</span>
+  <div class="lang-toggle">
+    <button class="lang-btn active" onclick="setLang('en')">EN</button>
+    <button class="lang-btn" onclick="setLang('de')">DE</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="tagline" data-en>Event Technician · Berliner · Explorer</p>
+    <p class="tagline" data-de>Veranstaltungstechniker · Berliner · Entdecker</p>
+    <h1>André<br>Doelle</h1>
+    <p class="lead" data-en>Born in Berlin, 1977. Twenty years of making things work — on stage, behind screens, and across continents. Currently exploring what happens when event tech meets AI.</p>
+    <p class="lead" data-de>Geboren in Berlin, 1977. Zwanzig Jahre lang dafür gesorgt, dass alles funktioniert — auf der Bühne, hinter Bildschirmen und über Kontinente hinweg. Gerade am Erkunden, was passiert, wenn Veranstaltungstechnik auf KI trifft.</p>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <p class="section-label" data-en>About</p>
+  <p class="section-label" data-de>Über mich</p>
+  <h2 data-en>The person behind the tech</h2>
+  <h2 data-de>Der Mensch hinter der Technik</h2>
+  <div class="about-grid">
+    <img class="about-photo" src="Pictures/Me.png" alt="André Doelle">
+    <div class="about-text">
+      <p data-en>I'm André — a Berlin-based senior project manager and event technician with over 20 years of experience in corporate productions. I plan and lead the technical side of conferences, panels and live events at the heart of the city, together with a team of five.</p>
+      <p data-de>Ich bin André — Senior Projektmanager und Veranstaltungstechniker aus Berlin mit über 20 Jahren Erfahrung in Unternehmensproduktionen. Ich plane und leite die technische Seite von Konferenzen, Panels und Live-Events im Herzen der Stadt, gemeinsam mit einem Team von fünf Personen.</p>
+
+      <p data-en>For more than two decades I've also worked backstage at <a href="https://www.scheinbar.de/" target="_blank">Scheinbar</a> — one of Berlin's most beloved Kleinkunst venues. Music, cabaret, comedy, the unexpected. Someone has to make the lights work.</p>
+      <p data-de>Seit über zwei Jahrzehnten arbeite ich außerdem backstage in der <a href="https://www.scheinbar.de/" target="_blank">Scheinbar</a> — einer der beliebtesten Berliner Kleinkunstbühnen. Musik, Kabarett, Comedy, das Unerwartete. Jemand muss dafür sorgen, dass das Licht funktioniert.</p>
+
+      <p data-en>I love cats, music, and the energy of live performance. I'm the proud father of Lisa and the loyal companion of Klitschko — my orange tabby who mostly judges me in silence.</p>
+      <p data-de>Ich liebe Katzen, Musik und die Energie von Live-Auftritten. Ich bin stolzer Vater von Lisa und treuer Begleiter von Klitschko — meinem orangefarbenen Kater, der mich meist schweigend beurteilt.</p>
+
+      <p data-en>In 2020, during the pandemic, I stumbled into a Zoom call with <a href="https://www.youtube.com/@OfficeHoursGlobal" target="_blank">OfficeHours Global</a>. It changed a lot. I learned cameras, streaming, live production, and made friends across the globe. Now I'm starting a new chapter: vibe coding.</p>
+      <p data-de>2020, während der Pandemie, geriet ich in einen Zoom-Call mit <a href="https://www.youtube.com/@OfficeHoursGlobal" target="_blank">OfficeHours Global</a>. Das hat einiges verändert. Ich lernte Kameras, Streaming, Live-Produktion und fand Freunde auf der ganzen Welt. Jetzt beginne ich ein neues Kapitel: Vibe Coding.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- LIFE -->
+<section id="life">
+  <p class="section-label" data-en>Life</p>
+  <p class="section-label" data-de>Leben</p>
+  <h2 data-en>The people & creatures I love</h2>
+  <h2 data-de>Die Menschen & Wesen, die ich liebe</h2>
+  <div class="gallery-grid">
+
+    <div class="gallery-item wide">
+      <img src="Pictures/Lisa+me.jpeg" alt="André and Lisa">
+      <div class="gallery-caption" data-en>Lisa & me</div>
+      <div class="gallery-caption" data-de>Lisa & ich</div>
+    </div>
+
+    <div class="gallery-item">
+      <img src="Pictures/Klitsschko.jpeg" alt="Klitschko the cat" style="object-position: center top;">
+      <div class="gallery-caption" data-en>Klitschko — the boss</div>
+      <div class="gallery-caption" data-de>Klitschko — der Chef</div>
+    </div>
+
+    <div class="gallery-item">
+      <img src="Pictures/my best friend.png" alt="My best friend">
+      <div class="gallery-caption" data-en>My best friend</div>
+      <div class="gallery-caption" data-de>Mein bester Freund</div>
+    </div>
+
+    <div class="gallery-item wide">
+      <img src="Pictures/Tlaloc_and_I.jpeg" alt="Tlaloc Lopez Waterman and André in Berlin">
+      <div class="gallery-caption" data-en>Tlaloc Lopez Waterman & me — Berlin</div>
+      <div class="gallery-caption" data-de>Tlaloc Lopez Waterman & ich — Berlin</div>
+    </div>
+
+    <div class="gallery-item">
+      <img src="Pictures/Tlaloc_L_and_me.jpg" alt="André, L-Wilson Spiro and Tlaloc at Märkisches Museum U-Bahn">
+      <div class="gallery-caption" data-en>Tlaloc, L-Wilson Spiro & me — Märkisches Museum</div>
+      <div class="gallery-caption" data-de>Tlaloc, L-Wilson Spiro & ich — Märkisches Museum</div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- WORK -->
+<section id="work">
+  <p class="section-label" data-en>Work</p>
+  <p class="section-label" data-de>Arbeit</p>
+  <h2 data-en>What I do</h2>
+  <h2 data-de>Was ich tue</h2>
+  <div class="work-grid">
+
+    <div class="work-card">
+      <div class="icon">🎪</div>
+      <h3 data-en>Corporate Events, Berlin</h3>
+      <h3 data-de>Corporate Events, Berlin</h3>
+      <p data-en>Senior project manager and technical lead for conferences, panels and corporate productions in the heart of Berlin. With a team of five, I make complex events look effortless.</p>
+      <p data-de>Senior Projektmanager und technischer Leiter für Konferenzen, Panels und Unternehmensproduktionen im Herzen Berlins. Mit einem Team von fünf lasse ich komplexe Events mühelos erscheinen.</p>
+    </div>
+
+    <div class="work-card">
+      <div class="icon">🎭</div>
+      <h3 data-en>Scheinbar Varieté</h3>
+      <h3 data-de>Scheinbar Varieté</h3>
+      <p data-en>20+ years backstage at one of Berlin's most loved Kleinkunst stages. Cabaret, music, comedy — where art meets chaos. <a href="https://www.scheinbar.de/" target="_blank">scheinbar.de</a></p>
+      <p data-de>Über 20 Jahre backstage an einer der beliebtesten Berliner Kleinkunstbühnen. Kabarett, Musik, Comedy — wo Kunst auf Chaos trifft. <a href="https://www.scheinbar.de/" target="_blank">scheinbar.de</a></p>
+    </div>
+
+    <div class="work-card">
+      <div class="icon">📡</div>
+      <h3 data-en>Live Production</h3>
+      <h3 data-de>Live-Produktion</h3>
+      <p data-en>Technical Director for OfficeHours Global's daily YouTube show. Routing signals, running Bitfocus Companion, driving the show — from Berlin to a global audience.</p>
+      <p data-de>Technischer Direktor der täglichen YouTube-Show von OfficeHours Global. Signale leiten, Bitfocus Companion steuern, die Show fahren — von Berlin aus für ein globales Publikum.</p>
+    </div>
+
+    <div class="work-card">
+      <div class="icon">💻</div>
+      <h3 data-en>Vibe Coding</h3>
+      <h3 data-de>Vibe Coding</h3>
+      <p data-en>The newest chapter. Learning to build with AI, publishing to the web, and exploring what happens when a 20-year event technician meets Claude Code. You're looking at the result.</p>
+      <p data-de>Das neueste Kapitel. Mit KI bauen lernen, ins Web veröffentlichen — erkunden, was passiert, wenn ein Veranstaltungstechniker auf Claude Code trifft. Du schaust gerade auf das Ergebnis.</p>
+    </div>
+
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- COMMUNITY -->
+<section id="community">
+  <p class="section-label" data-en>Community</p>
+  <p class="section-label" data-de>Gemeinschaft</p>
+  <h2 data-en>Connected globally</h2>
+  <h2 data-de>Global vernetzt</h2>
+  <div class="community-box">
+    <p data-en>In late 2020, stuck at home like the rest of the world, I joined a Zoom call that turned into a community. <a href="https://www.youtube.com/@OfficeHoursGlobal" target="_blank">OfficeHours Global</a> is a daily gathering of event, media and production professionals from around the world — sharing knowledge, asking questions, figuring things out together.</p>
+    <p data-de>Ende 2020, zu Hause festgehalten wie der Rest der Welt, nahm ich an einem Zoom-Call teil, der sich zu einer Gemeinschaft entwickelte. <a href="https://www.youtube.com/@OfficeHoursGlobal" target="_blank">OfficeHours Global</a> ist ein tägliches Treffen von Event-, Medien- und Produktionsprofis aus aller Welt — Wissen teilen, Fragen stellen, gemeinsam Dinge herausfinden.</p>
+    <p data-en>What started as asking questions turned into running the show. Through OfficeHours I learned cameras, streaming, mimoLive, vMix, Bitfocus Companion — and made real friendships that crossed the Atlantic. Tlaloc Lopez Waterman and L-Wilson Spiro came to Berlin. We ended up at the Märkisches Museum U-Bahn station at some point, which feels about right.</p>
+    <p data-de>Was als Fragen stellen begann, wurde zum Fahren der Show. Durch OfficeHours lernte ich Kameras, Streaming, mimoLive, vMix, Bitfocus Companion — und knüpfte echte Freundschaften, die den Atlantik überbrückten. Tlaloc Lopez Waterman und L-Wilson Spiro kamen nach Berlin. Irgendwie landeten wir am U-Bahnhof Märkisches Museum, was sich irgendwie passend anfühlt.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- CONTACT -->
+<section id="contact">
+  <p class="section-label" data-en>Contact</p>
+  <p class="section-label" data-de>Kontakt</p>
+  <h2 data-en>Say hello</h2>
+  <h2 data-de>Meld dich</h2>
+  <div class="contact-links">
+    <a href="mailto:input@mail.de" class="contact-link">
+      <span class="contact-icon">✉</span>
+      <span>input@mail.de</span>
+    </a>
+    <a href="tel:+491756002424" class="contact-link">
+      <span class="contact-icon">☎</span>
+      <span>+49 175 600 2424</span>
+    </a>
+    <a href="https://www.youtube.com/@OfficeHoursGlobal" target="_blank" class="contact-link">
+      <span class="contact-icon">▶</span>
+      <span>OfficeHours Global</span>
+    </a>
+    <a href="https://www.scheinbar.de/" target="_blank" class="contact-link">
+      <span class="contact-icon">🎭</span>
+      <span>Scheinbar Berlin</span>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <p>André Doelle · Berlin · <a href="mailto:input@mail.de">input@mail.de</a></p>
+  <p class="footer-sub" data-en>Made with Claude Code & a lot of Berliner Luft</p>
+  <p class="footer-sub" data-de>Gemacht mit Claude Code & jeder Menge Berliner Luft</p>
+</footer>
+
+<script>
+  function setLang(lang) {
+    document.documentElement.setAttribute('data-lang', lang);
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.textContent === lang.toUpperCase());
+    });
+  }
+</script>
+
 </body>
 </html>
