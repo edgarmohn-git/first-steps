@@ -43,12 +43,27 @@
       border-bottom: 1px solid rgba(201, 168, 76, 0.12);
     }
 
+    .nav-left { display: flex; align-items: center; gap: 2rem; }
+
     .nav-name {
       font-family: 'Playfair Display', serif;
       font-size: 1.15rem;
       letter-spacing: 0.06em;
       color: var(--gold);
     }
+
+    .nav-family {
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-family:hover { color: var(--gold); }
+
+    .nav-right { display: flex; align-items: center; gap: 1.5rem; }
 
     .lang-toggle {
       display: flex;
@@ -69,11 +84,7 @@
       transition: all 0.2s;
     }
 
-    .lang-btn.active {
-      background: var(--gold);
-      color: var(--bg);
-      font-weight: 500;
-    }
+    .lang-btn.active { background: var(--gold); color: var(--bg); font-weight: 500; }
 
     /* HERO */
     .hero {
@@ -90,7 +101,7 @@
       background-image: url('Pictures/beautiful background.jpeg');
       background-size: cover;
       background-position: center 20%;
-      filter: brightness(0.38);
+      filter: brightness(0.55);
     }
 
     .hero-overlay {
@@ -98,8 +109,8 @@
       inset: 0;
       background: linear-gradient(to top,
         rgba(13,13,18,1) 0%,
-        rgba(13,13,18,0.6) 40%,
-        rgba(13,13,18,0.1) 100%
+        rgba(13,13,18,0.5) 45%,
+        rgba(13,13,18,0.05) 100%
       );
     }
 
@@ -127,9 +138,35 @@
 
     .hero-content .lead {
       font-size: 1.05rem;
-      color: rgba(224, 219, 208, 0.78);
+      color: rgba(224, 219, 208, 0.82);
       max-width: 520px;
       line-height: 1.75;
+    }
+
+    /* ARTWORK SPOTLIGHT */
+    .artwork-strip {
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+      height: 420px;
+    }
+
+    .artwork-strip img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+      display: block;
+    }
+
+    .artwork-credit {
+      position: absolute;
+      bottom: 1.5rem;
+      right: 2rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      color: rgba(255,255,255,0.5);
+      text-transform: uppercase;
     }
 
     /* SECTIONS */
@@ -184,9 +221,7 @@
       transition: border-color 0.2s;
     }
 
-    .about-text a:hover {
-      border-color: var(--gold);
-    }
+    .about-text a:hover { border-color: var(--gold); }
 
     /* GALLERY */
     .gallery-grid {
@@ -222,7 +257,61 @@
       background: linear-gradient(transparent, rgba(0,0,0,0.75));
       font-size: 0.82rem;
       color: rgba(255,255,255,0.88);
-      letter-spacing: 0.02em;
+    }
+
+    /* HIFI */
+    .hifi-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.4rem;
+      margin-bottom: 2rem;
+    }
+
+    .hifi-card {
+      background: var(--surface);
+      border: 1px solid rgba(201, 168, 76, 0.1);
+      border-radius: var(--radius);
+      padding: 2.2rem;
+      transition: border-color 0.25s;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .hifi-card:hover { border-color: rgba(201, 168, 76, 0.35); }
+
+    .hifi-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: var(--gold);
+      margin-bottom: 0.3rem;
+    }
+
+    .hifi-origin {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1.2rem;
+    }
+
+    .hifi-card p {
+      color: rgba(224, 219, 208, 0.75);
+      font-size: 0.92rem;
+      line-height: 1.75;
+    }
+
+    .hifi-link {
+      display: inline-block;
+      margin-top: 1rem;
+      font-size: 0.78rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(201, 168, 76, 0.3);
+      padding-bottom: 1px;
     }
 
     /* WORK */
@@ -241,7 +330,6 @@
     }
 
     .work-card:hover { border-color: rgba(201, 168, 76, 0.3); }
-
     .work-card .icon { font-size: 1.6rem; margin-bottom: 1rem; }
 
     .work-card h3 {
@@ -252,16 +340,8 @@
       margin-bottom: 0.7rem;
     }
 
-    .work-card p {
-      color: var(--muted);
-      font-size: 0.9rem;
-      line-height: 1.75;
-    }
-
-    .work-card a {
-      color: var(--gold-light);
-      text-decoration: none;
-    }
+    .work-card p { color: var(--muted); font-size: 0.9rem; line-height: 1.75; }
+    .work-card a { color: var(--gold-light); text-decoration: none; }
 
     /* COMMUNITY */
     .community-box {
@@ -278,12 +358,7 @@
     }
 
     .community-box p:last-child { margin-bottom: 0; }
-
-    .community-box a {
-      color: var(--gold);
-      text-decoration: none;
-      border-bottom: 1px solid rgba(201, 168, 76, 0.3);
-    }
+    .community-box a { color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(201, 168, 76, 0.3); }
 
     /* CONTACT */
     .contact-links {
@@ -307,17 +382,8 @@
       transition: border-color 0.2s, background 0.2s;
     }
 
-    .contact-link:hover {
-      border-color: rgba(201, 168, 76, 0.5);
-      background: var(--surface2);
-    }
-
-    .contact-icon {
-      font-size: 1.1rem;
-      width: 24px;
-      text-align: center;
-      opacity: 0.8;
-    }
+    .contact-link:hover { border-color: rgba(201, 168, 76, 0.5); background: var(--surface2); }
+    .contact-icon { font-size: 1.1rem; width: 24px; text-align: center; opacity: 0.8; }
 
     /* DIVIDER */
     .divider {
@@ -336,34 +402,30 @@
     }
 
     footer a { color: var(--gold); text-decoration: none; }
+    .footer-sub { margin-top: 0.6rem; font-size: 0.73rem; opacity: 0.45; }
 
-    .footer-sub {
-      margin-top: 0.6rem;
-      font-size: 0.73rem;
-      opacity: 0.45;
-    }
-
-    /* LANGUAGE VISIBILITY */
+    /* LANGUAGE */
     html[data-lang="en"] [data-de] { display: none; }
     html[data-lang="de"] [data-en] { display: none; }
 
     /* RESPONSIVE */
     @media (max-width: 800px) {
       nav { padding: 1rem 1.4rem; }
+      .nav-family { display: none; }
       section { padding: 4rem 1.4rem; }
       .about-grid { grid-template-columns: 1fr; gap: 2rem; }
       .about-photo { max-width: 240px; }
       .gallery-grid { grid-template-columns: 1fr 1fr; }
       .gallery-item.wide { grid-column: span 2; }
-      .work-grid { grid-template-columns: 1fr; }
+      .work-grid, .hifi-grid { grid-template-columns: 1fr; }
       .hero { padding: 5rem 1.4rem 3.5rem; }
+      .artwork-strip { height: 280px; }
     }
 
     @media (max-width: 480px) {
       .gallery-grid { grid-template-columns: 1fr; }
       .gallery-item.wide { grid-column: span 1; }
       .gallery-item img { height: 240px; }
-      h2 { margin-bottom: 2rem; }
     }
   </style>
 </head>
@@ -371,10 +433,16 @@
 
 <!-- NAV -->
 <nav>
-  <span class="nav-name">André Doelle</span>
-  <div class="lang-toggle">
-    <button class="lang-btn active" onclick="setLang('en')">EN</button>
-    <button class="lang-btn" onclick="setLang('de')">DE</button>
+  <div class="nav-left">
+    <span class="nav-name">André Doelle</span>
+    <a href="family.html" class="nav-family" data-en>🔒 Family</a>
+    <a href="family.html" class="nav-family" data-de>🔒 Familie</a>
+  </div>
+  <div class="nav-right">
+    <div class="lang-toggle">
+      <button class="lang-btn active" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" onclick="setLang('de')">DE</button>
+    </div>
   </div>
 </nav>
 
@@ -391,6 +459,13 @@
   </div>
 </div>
 
+<!-- ARTWORK SPOTLIGHT -->
+<div class="artwork-strip">
+  <img src="Pictures/beautiful background.jpeg" alt="Artwork">
+  <div class="artwork-credit" data-en>Art that speaks</div>
+  <div class="artwork-credit" data-de>Kunst, die spricht</div>
+</div>
+
 <!-- ABOUT -->
 <section id="about">
   <p class="section-label" data-en>About</p>
@@ -400,17 +475,17 @@
   <div class="about-grid">
     <img class="about-photo" src="Pictures/Me.png" alt="André Doelle">
     <div class="about-text">
-      <p data-en>I'm André — a Berlin-based senior project manager and event technician with over 20 years of experience in corporate productions. I plan and lead the technical side of conferences, panels and live events at the heart of the city, together with a team of five.</p>
-      <p data-de>Ich bin André — Senior Projektmanager und Veranstaltungstechniker aus Berlin mit über 20 Jahren Erfahrung in Unternehmensproduktionen. Ich plane und leite die technische Seite von Konferenzen, Panels und Live-Events im Herzen der Stadt, gemeinsam mit einem Team von fünf Personen.</p>
+      <p data-en>I'm André — a Berlin-based senior project manager and event technician with over 20 years of experience. I plan and lead the technical side of conferences, panels and live events at the heart of the city, together with a team of five.</p>
+      <p data-de>Ich bin André — Senior Projektmanager und Veranstaltungstechniker aus Berlin mit über 20 Jahren Erfahrung. Ich plane und leite die technische Seite von Konferenzen, Panels und Live-Events im Herzen der Stadt, gemeinsam mit einem Team von fünf Personen.</p>
 
-      <p data-en>For more than two decades I've also worked backstage at <a href="https://www.scheinbar.de/" target="_blank">Scheinbar</a> — one of Berlin's most beloved Kleinkunst venues. Music, cabaret, comedy, the unexpected. Someone has to make the lights work.</p>
-      <p data-de>Seit über zwei Jahrzehnten arbeite ich außerdem backstage in der <a href="https://www.scheinbar.de/" target="_blank">Scheinbar</a> — einer der beliebtesten Berliner Kleinkunstbühnen. Musik, Kabarett, Comedy, das Unerwartete. Jemand muss dafür sorgen, dass das Licht funktioniert.</p>
+      <p data-en>For more than two decades I've also worked backstage at <a href="https://www.scheinbar.de/" target="_blank">Scheinbar</a> — one of Berlin's most beloved Kleinkunst venues. Music, cabaret, comedy. Someone has to make the lights work.</p>
+      <p data-de>Seit über zwei Jahrzehnten arbeite ich außerdem backstage in der <a href="https://www.scheinbar.de/" target="_blank">Scheinbar</a> — einer der beliebtesten Berliner Kleinkunstbühnen. Musik, Kabarett, Comedy. Jemand muss dafür sorgen, dass das Licht funktioniert.</p>
 
-      <p data-en>I love cats, music, and the energy of live performance. I'm the proud father of Lisa and the loyal companion of Klitschko — my orange tabby who mostly judges me in silence.</p>
-      <p data-de>Ich liebe Katzen, Musik und die Energie von Live-Auftritten. Ich bin stolzer Vater von Lisa und treuer Begleiter von Klitschko — meinem orangefarbenen Kater, der mich meist schweigend beurteilt.</p>
+      <p data-en>I love cats, music, and the energy of live performance. I'm the proud father of Lisa and loyal companion to Klitschko — my orange tabby who judges me in silence from his fluffy bed.</p>
+      <p data-de>Ich liebe Katzen, Musik und die Energie von Live-Auftritten. Ich bin stolzer Vater von Lisa und treuer Begleiter von Klitschko — meinem orangefarbenen Kater, der mich schweigend aus seinem Kissen heraus beurteilt.</p>
 
-      <p data-en>In 2020, during the pandemic, I stumbled into a Zoom call with <a href="https://www.youtube.com/@OfficeHoursGlobal" target="_blank">OfficeHours Global</a>. It changed a lot. I learned cameras, streaming, live production, and made friends across the globe. Now I'm starting a new chapter: vibe coding.</p>
-      <p data-de>2020, während der Pandemie, geriet ich in einen Zoom-Call mit <a href="https://www.youtube.com/@OfficeHoursGlobal" target="_blank">OfficeHours Global</a>. Das hat einiges verändert. Ich lernte Kameras, Streaming, Live-Produktion und fand Freunde auf der ganzen Welt. Jetzt beginne ich ein neues Kapitel: Vibe Coding.</p>
+      <p data-en>In 2020, during the pandemic, I stumbled into a Zoom call with <a href="https://www.youtube.com/@OfficeHoursGlobal" target="_blank">OfficeHours Global</a>. It changed a lot. I learned cameras, streaming, live production — and made real friends across the globe. Now I'm starting a new chapter: vibe coding.</p>
+      <p data-de>2020, während der Pandemie, geriet ich in einen Zoom-Call mit <a href="https://www.youtube.com/@OfficeHoursGlobal" target="_blank">OfficeHours Global</a>. Das hat einiges verändert. Ich lernte Kameras, Streaming, Live-Produktion — und fand echte Freunde auf der ganzen Welt. Jetzt beginne ich ein neues Kapitel: Vibe Coding.</p>
     </div>
   </div>
 </section>
@@ -432,9 +507,15 @@
     </div>
 
     <div class="gallery-item">
-      <img src="Pictures/Klitsschko.jpeg" alt="Klitschko the cat" style="object-position: center top;">
+      <img src="Pictures/Klitsschko.jpeg" alt="Klitschko" style="object-position: center top;">
       <div class="gallery-caption" data-en>Klitschko — the boss</div>
       <div class="gallery-caption" data-de>Klitschko — der Chef</div>
+    </div>
+
+    <div class="gallery-item">
+      <img src="Pictures/private/Klitschko-2.jpg" alt="Klitschko in his bed" style="object-position: center top;">
+      <div class="gallery-caption" data-en>Klitschko — deeply unbothered</div>
+      <div class="gallery-caption" data-de>Klitschko — zutiefst unbeeindruckt</div>
     </div>
 
     <div class="gallery-item">
@@ -444,18 +525,51 @@
     </div>
 
     <div class="gallery-item wide">
-      <img src="Pictures/Tlaloc_and_I.jpeg" alt="Tlaloc Lopez Waterman and André in Berlin">
+      <img src="Pictures/Tlaloc_and_I.jpeg" alt="Tlaloc Lopez Waterman and André">
       <div class="gallery-caption" data-en>Tlaloc Lopez Waterman & me — Berlin</div>
       <div class="gallery-caption" data-de>Tlaloc Lopez Waterman & ich — Berlin</div>
     </div>
 
     <div class="gallery-item">
-      <img src="Pictures/Tlaloc_L_and_me.jpg" alt="André, L-Wilson Spiro and Tlaloc at Märkisches Museum U-Bahn">
+      <img src="Pictures/Tlaloc_L_and_me.jpg" alt="André, L-Wilson Spiro and Tlaloc">
       <div class="gallery-caption" data-en>Tlaloc, L-Wilson Spiro & me — Märkisches Museum</div>
       <div class="gallery-caption" data-de>Tlaloc, L-Wilson Spiro & ich — Märkisches Museum</div>
     </div>
 
   </div>
+</section>
+
+<hr class="divider">
+
+<!-- HIFI -->
+<section id="hifi">
+  <p class="section-label" data-en>Sound</p>
+  <p class="section-label" data-de>Klang</p>
+  <h2 data-en>Listening seriously</h2>
+  <h2 data-de>Ernsthaftes Zuhören</h2>
+  <div class="hifi-grid">
+
+    <a class="hifi-card" href="https://www.linn.co.uk" target="_blank">
+      <div class="hifi-brand">Linn</div>
+      <div class="hifi-origin" data-en>Glasgow, Scotland · Est. 1972</div>
+      <div class="hifi-origin" data-de>Glasgow, Schottland · Gegr. 1972</div>
+      <p data-en>The philosophy is simple: start with the best possible source, and everything downstream benefits. Linn's legendary Sondek LP12 turntable redefined what analogue playback could be. Their streaming systems carry the same obsession into the digital age — uncompromising, hand-built in Scotland.</p>
+      <p data-de>Die Philosophie ist einfach: Beginne mit der bestmöglichen Quelle, und alles Nachfolgende profitiert davon. Linns legendärer Sondek LP12-Plattenspieler hat neu definiert, was analoge Wiedergabe sein kann. Ihre Streaming-Systeme tragen dieselbe Obsession ins digitale Zeitalter — kompromisslos, handgefertigt in Schottland.</p>
+      <span class="hifi-link">linn.co.uk →</span>
+    </a>
+
+    <a class="hifi-card" href="https://www.astellnkern.com" target="_blank">
+      <div class="hifi-brand">Astell&Kern</div>
+      <div class="hifi-origin" data-en>Seoul, Korea · Portable High-Res Audio</div>
+      <div class="hifi-origin" data-de>Seoul, Korea · Portables High-Res Audio</div>
+      <p data-en>Studio-quality sound in your pocket. Astell&Kern's portable music players are precision instruments — balanced outputs, ultra-low noise floors, and industrial designs that feel like holding a piece of sculpture. For those who refuse to compromise on sound, even on the move.</p>
+      <p data-de>Studioqualität in der Tasche. Astell&Kerns portable Musikplayer sind Präzisionsinstrumente — symmetrische Ausgänge, extrem niedriges Rauschen und ein Design, das sich anfühlt, als würde man eine Skulptur halten. Für alle, die auch unterwegs keinen Kompromiss beim Klang eingehen wollen.</p>
+      <span class="hifi-link">astellnkern.com →</span>
+    </a>
+
+  </div>
+  <p style="color: var(--muted); font-size: 0.88rem;" data-en>High-fidelity music is not a luxury — it's what music actually sounds like when nothing stands between you and the recording.</p>
+  <p style="color: var(--muted); font-size: 0.88rem;" data-de>High-Fidelity-Musik ist kein Luxus — es ist das, wie Musik wirklich klingt, wenn nichts zwischen dir und der Aufnahme steht.</p>
 </section>
 
 <hr class="divider">
@@ -496,8 +610,8 @@
       <div class="icon">💻</div>
       <h3 data-en>Vibe Coding</h3>
       <h3 data-de>Vibe Coding</h3>
-      <p data-en>The newest chapter. Learning to build with AI, publishing to the web, and exploring what happens when a 20-year event technician meets Claude Code. You're looking at the result.</p>
-      <p data-de>Das neueste Kapitel. Mit KI bauen lernen, ins Web veröffentlichen — erkunden, was passiert, wenn ein Veranstaltungstechniker auf Claude Code trifft. Du schaust gerade auf das Ergebnis.</p>
+      <p data-en>The newest chapter. Learning to build with AI, publishing to the web, exploring what happens when a 20-year event technician meets Claude Code. You're looking at the result.</p>
+      <p data-de>Das neueste Kapitel. Mit KI bauen lernen, ins Web veröffentlichen — erkunden, was passiert, wenn ein Veranstaltungstechniker mit 20 Jahren Erfahrung auf Claude Code trifft. Du schaust gerade auf das Ergebnis.</p>
     </div>
 
   </div>
@@ -513,9 +627,9 @@
   <h2 data-de>Global vernetzt</h2>
   <div class="community-box">
     <p data-en>In late 2020, stuck at home like the rest of the world, I joined a Zoom call that turned into a community. <a href="https://www.youtube.com/@OfficeHoursGlobal" target="_blank">OfficeHours Global</a> is a daily gathering of event, media and production professionals from around the world — sharing knowledge, asking questions, figuring things out together.</p>
-    <p data-de>Ende 2020, zu Hause festgehalten wie der Rest der Welt, nahm ich an einem Zoom-Call teil, der sich zu einer Gemeinschaft entwickelte. <a href="https://www.youtube.com/@OfficeHoursGlobal" target="_blank">OfficeHours Global</a> ist ein tägliches Treffen von Event-, Medien- und Produktionsprofis aus aller Welt — Wissen teilen, Fragen stellen, gemeinsam Dinge herausfinden.</p>
-    <p data-en>What started as asking questions turned into running the show. Through OfficeHours I learned cameras, streaming, mimoLive, vMix, Bitfocus Companion — and made real friendships that crossed the Atlantic. Tlaloc Lopez Waterman and L-Wilson Spiro came to Berlin. We ended up at the Märkisches Museum U-Bahn station at some point, which feels about right.</p>
-    <p data-de>Was als Fragen stellen begann, wurde zum Fahren der Show. Durch OfficeHours lernte ich Kameras, Streaming, mimoLive, vMix, Bitfocus Companion — und knüpfte echte Freundschaften, die den Atlantik überbrückten. Tlaloc Lopez Waterman und L-Wilson Spiro kamen nach Berlin. Irgendwie landeten wir am U-Bahnhof Märkisches Museum, was sich irgendwie passend anfühlt.</p>
+    <p data-de>Ende 2020, zu Hause festgehalten wie der Rest der Welt, nahm ich an einem Zoom-Call teil, der sich zu einer Gemeinschaft entwickelte. <a href="https://www.youtube.com/@OfficeHoursGlobal" target="_blank">OfficeHours Global</a> ist ein tägliches Treffen von Event-, Medien- und Produktionsprofis aus aller Welt.</p>
+    <p data-en>What started as asking questions turned into running the show. Through OfficeHours I learned cameras, streaming, mimoLive, vMix, Bitfocus Companion — and made real friendships that crossed the Atlantic. Tlaloc Lopez Waterman and L-Wilson Spiro came to Berlin. We ended up at Märkisches Museum U-Bahn station at some point, which feels about right.</p>
+    <p data-de>Was als Fragen stellen begann, wurde zum Fahren der Show. Durch OfficeHours lernte ich Kameras, Streaming, mimoLive, vMix, Bitfocus Companion — und knüpfte echte Freundschaften. Tlaloc Lopez Waterman und L-Wilson Spiro kamen nach Berlin. Irgendwie landeten wir am U-Bahnhof Märkisches Museum.</p>
   </div>
 </section>
 
@@ -529,20 +643,16 @@
   <h2 data-de>Meld dich</h2>
   <div class="contact-links">
     <a href="mailto:input@mail.de" class="contact-link">
-      <span class="contact-icon">✉</span>
-      <span>input@mail.de</span>
+      <span class="contact-icon">✉</span><span>input@mail.de</span>
     </a>
     <a href="tel:+491756002424" class="contact-link">
-      <span class="contact-icon">☎</span>
-      <span>+49 175 600 2424</span>
+      <span class="contact-icon">☎</span><span>+49 175 600 2424</span>
     </a>
     <a href="https://www.youtube.com/@OfficeHoursGlobal" target="_blank" class="contact-link">
-      <span class="contact-icon">▶</span>
-      <span>OfficeHours Global</span>
+      <span class="contact-icon">▶</span><span>OfficeHours Global</span>
     </a>
     <a href="https://www.scheinbar.de/" target="_blank" class="contact-link">
-      <span class="contact-icon">🎭</span>
-      <span>Scheinbar Berlin</span>
+      <span class="contact-icon">🎭</span><span>Scheinbar Berlin</span>
     </a>
   </div>
 </section>
