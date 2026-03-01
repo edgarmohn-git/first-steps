@@ -404,6 +404,62 @@
     footer a { color: var(--gold); text-decoration: none; }
     .footer-sub { margin-top: 0.6rem; font-size: 0.73rem; opacity: 0.45; }
 
+    /* LIGHTBOX */
+    .gallery-item { cursor: zoom-in; }
+
+    .gallery-item::after {
+      content: '⤢';
+      position: absolute;
+      top: 0.7rem; right: 0.8rem;
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.7);
+      opacity: 0;
+      transition: opacity 0.2s;
+      pointer-events: none;
+    }
+
+    .gallery-item:hover::after { opacity: 1; }
+
+    #lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      background: rgba(0,0,0,0.92);
+      cursor: zoom-out;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    #lightbox.open { display: flex; }
+
+    #lightbox img {
+      max-width: 92vw;
+      max-height: 92vh;
+      object-fit: contain;
+      border-radius: 6px;
+      box-shadow: 0 0 80px rgba(0,0,0,0.8);
+      animation: lb-in 0.2s ease;
+    }
+
+    @keyframes lb-in {
+      from { opacity: 0; transform: scale(0.94); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+
+    #lightbox-close {
+      position: fixed;
+      top: 1.2rem; right: 1.5rem;
+      font-size: 1.8rem;
+      color: rgba(255,255,255,0.6);
+      cursor: pointer;
+      line-height: 1;
+      transition: color 0.2s;
+    }
+
+    #lightbox-close:hover { color: #fff; }
+
     /* LANGUAGE */
     html[data-lang="en"] [data-de] { display: none; }
     html[data-lang="de"] [data-en] { display: none; }
@@ -663,6 +719,12 @@
   <p class="footer-sub" data-de>Gemacht mit Claude Code & jeder Menge Berliner Luft</p>
 </footer>
 
+<!-- LIGHTBOX -->
+<div id="lightbox" onclick="closeLightbox()">
+  <span id="lightbox-close" onclick="closeLightbox()">✕</span>
+  <img id="lightbox-img" src="" alt="">
+</div>
+
 <script>
   function setLang(lang) {
     document.documentElement.setAttribute('data-lang', lang);
@@ -670,6 +732,23 @@
       btn.classList.toggle('active', btn.textContent === lang.toUpperCase());
     });
   }
+
+  // Lightbox
+  document.querySelectorAll('.gallery-item img').forEach(img => {
+    img.addEventListener('click', e => {
+      e.stopPropagation();
+      document.getElementById('lightbox-img').src = img.src;
+      document.getElementById('lightbox').classList.add('open');
+    });
+  });
+
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeLightbox();
+  });
 </script>
 
 </body>
