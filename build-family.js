@@ -249,7 +249,7 @@ console.log('✓ family-source.html written with embedded images');
 
 // Encrypt with staticrypt (outputs to ./family-source.html in same dir)
 console.log('✓ Encrypting with AES-256...');
-execSync('npx staticrypt family-source.html -p "NewYork-NewYork" -d . --remember false', { stdio: 'inherit' });
+execSync('npx staticrypt family-source.html -p "Kl1tschko#Berlin!77" -d . --remember false', { stdio: 'inherit' });
 fs.renameSync('family-source.html', 'family.html');
 
 console.log('✓ family.html encrypted and ready');
