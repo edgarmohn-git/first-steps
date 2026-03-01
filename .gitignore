@@ -1,3 +1,10 @@
 .DS_Store
 Pictures/**/.DS_Store
 Pictures/private/
+
+# Staticrypt config (contains salt — not secret, but no need to publish)
+.staticrypt.json
+
+# Screenshots and misc files that shouldn't go public
+Pictures/*Screenshot*
+Pictures/*.PNG
