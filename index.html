@@ -464,6 +464,84 @@
     html[data-lang="en"] [data-de] { display: none; }
     html[data-lang="de"] [data-en] { display: none; }
 
+    /* TOOLS */
+    .tools-categories { display: flex; flex-direction: column; gap: 2.2rem; }
+
+    .tool-cat-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.85rem;
+    }
+
+    .tools-pills { display: flex; flex-wrap: wrap; gap: 0.55rem; }
+
+    .tool-pill {
+      display: inline-block;
+      padding: 0.42rem 1.1rem;
+      background: var(--surface);
+      border: 1px solid rgba(201, 168, 76, 0.18);
+      border-radius: 100px;
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.84rem;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .tool-pill:hover {
+      border-color: rgba(201, 168, 76, 0.55);
+      background: var(--surface2);
+      color: var(--gold-light);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(201, 168, 76, 0.08);
+    }
+
+    /* LINKS */
+    .links-sub-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .links-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      gap: 0.85rem;
+      margin-bottom: 2.8rem;
+    }
+
+    .link-card {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      padding: 0.95rem 1.2rem;
+      background: var(--surface);
+      border: 1px solid rgba(201, 168, 76, 0.1);
+      border-radius: var(--radius);
+      text-decoration: none;
+      color: var(--text);
+      transition: all 0.22s ease;
+    }
+
+    .link-card:hover {
+      border-color: rgba(201, 168, 76, 0.4);
+      background: var(--surface2);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .link-card-icon { font-size: 1.05rem; opacity: 0.75; flex-shrink: 0; }
+    .link-card-name { font-size: 0.9rem; font-weight: 400; color: var(--text); display: block; }
+    .link-card-domain { font-size: 0.73rem; color: var(--muted); display: block; margin-top: 0.1rem; }
+
+    .link-card.yt { border-color: rgba(255, 60, 60, 0.1); }
+    .link-card.yt:hover { border-color: rgba(255, 60, 60, 0.4); }
+    .link-card.yt .link-card-icon { color: #e05555; opacity: 1; }
+
     /* RESPONSIVE */
     @media (max-width: 800px) {
       nav { padding: 1rem 1.4rem; }
@@ -491,9 +569,8 @@
 <nav>
   <div class="nav-left">
     <span class="nav-name">André Doelle</span>
-    <!-- TODO: replace NETLIFY_URL with your Netlify site URL after deployment -->
-    <a href="NETLIFY_URL" class="nav-family" data-en>🔒 Family</a>
-    <a href="NETLIFY_URL" class="nav-family" data-de>🔒 Familie</a>
+    <a href="family.html" class="nav-family" data-en>🔒 Family</a>
+    <a href="family.html" class="nav-family" data-de>🔒 Familie</a>
   </div>
   <div class="nav-right">
     <div class="lang-toggle">
@@ -511,8 +588,8 @@
     <p class="tagline" data-en>Event Technician · Berliner · Explorer</p>
     <p class="tagline" data-de>Veranstaltungstechniker · Berliner · Entdecker</p>
     <h1>André<br>Doelle</h1>
-    <p class="lead" data-en>Born in Berlin, 1977. Twenty years of making things work — on stage, behind screens, and across continents. Currently exploring what happens when event tech meets AI.</p>
-    <p class="lead" data-de>Geboren in Berlin, 1977. Zwanzig Jahre lang dafür gesorgt, dass alles funktioniert — auf der Bühne, hinter Bildschirmen und über Kontinente hinweg. Gerade am Erkunden, was passiert, wenn Veranstaltungstechnik auf KI trifft.</p>
+    <p class="lead" data-en>Born in Eschwege, 1977. Berliner for over 25 years. Twenty years of making things work — on stage, behind screens, and across continents. Currently exploring what happens when event tech meets AI.</p>
+    <p class="lead" data-de>Geboren in Eschwege, 1977. Seit über 25 Jahren Berliner. Zwanzig Jahre lang dafür gesorgt, dass alles funktioniert — auf der Bühne, hinter Bildschirmen und über Kontinente hinweg. Gerade am Erkunden, was passiert, wenn Veranstaltungstechnik auf KI trifft.</p>
   </div>
 </div>
 
@@ -541,8 +618,8 @@
       <p data-en>I love cats, music, and the energy of live performance. I'm the proud father of Lisa and loyal companion to Klitschko — my orange tabby who judges me in silence from his fluffy bed.</p>
       <p data-de>Ich liebe Katzen, Musik und die Energie von Live-Auftritten. Ich bin stolzer Vater von Lisa und treuer Begleiter von Klitschko — meinem orangefarbenen Kater, der mich schweigend aus seinem Kissen heraus beurteilt.</p>
 
-      <p data-en>In 2020, during the pandemic, I stumbled into a Zoom call with <a href="https://www.youtube.com/@OfficeHoursGlobal" target="_blank">OfficeHours Global</a>. It changed a lot. I learned cameras, streaming, live production — and made real friends across the globe. Now I'm starting a new chapter: vibe coding.</p>
-      <p data-de>2020, während der Pandemie, geriet ich in einen Zoom-Call mit <a href="https://www.youtube.com/@OfficeHoursGlobal" target="_blank">OfficeHours Global</a>. Das hat einiges verändert. Ich lernte Kameras, Streaming, Live-Produktion — und fand echte Freunde auf der ganzen Welt. Jetzt beginne ich ein neues Kapitel: Vibe Coding.</p>
+      <p data-en>In mid 2020, during the pandemic, I stumbled into a Zoom call with <a href="https://www.youtube.com/@OfficeHoursGlobal" target="_blank">OfficeHours Global</a>. It changed a lot. I learned cameras, streaming, live production — and made real friends across the globe. Now I'm starting a new chapter: vibe coding.</p>
+      <p data-de>Mitte 2020, während der Pandemie, geriet ich in einen Zoom-Call mit <a href="https://www.youtube.com/@OfficeHoursGlobal" target="_blank">OfficeHours Global</a>. Das hat einiges verändert. Ich lernte Kameras, Streaming, Live-Produktion — und fand echte Freunde auf der ganzen Welt. Jetzt beginne ich ein neues Kapitel: Vibe Coding.</p>
     </div>
   </div>
 </section>
@@ -712,6 +789,82 @@
 
 <hr class="divider">
 
+<!-- TOOLS -->
+<section id="tools">
+  <p class="section-label" data-en>Tools</p>
+  <p class="section-label" data-de>Werkzeuge</p>
+  <h2 data-en>Tools I work with</h2>
+  <h2 data-de>Werkzeuge, die ich nutze</h2>
+  <div class="tools-categories">
+
+    <div>
+      <div class="tool-cat-label" data-en>Video Production</div>
+      <div class="tool-cat-label" data-de>Videoproduktion</div>
+      <div class="tools-pills">
+        <a class="tool-pill" href="https://www.blackmagicdesign.com/products/atem" target="_blank">ATEM</a>
+        <a class="tool-pill" href="https://centralcontrol.io/" target="_blank">CentralControl</a>
+        <a class="tool-pill" href="https://mixeffect.app/" target="_blank">MixEffect</a>
+        <a class="tool-pill" href="https://mimolive.com/" target="_blank">mimoLive</a>
+        <a class="tool-pill" href="https://www.vmix.com/" target="_blank">vMix</a>
+        <a class="tool-pill" href="https://obsproject.com/" target="_blank">OBS</a>
+      </div>
+    </div>
+
+    <div>
+      <div class="tool-cat-label" data-en>Streaming & Networking</div>
+      <div class="tool-cat-label" data-de>Streaming & Netzwerk</div>
+      <div class="tools-pills">
+        <a class="tool-pill" href="https://ndi.video/" target="_blank">NDI</a>
+        <a class="tool-pill" href="https://h2r.graphics/" target="_blank">H2R Graphics</a>
+        <a class="tool-pill" href="https://universe-control.com/" target="_blank">Universe</a>
+      </div>
+    </div>
+
+    <div>
+      <div class="tool-cat-label" data-en>Audio</div>
+      <div class="tool-cat-label" data-de>Audio</div>
+      <div class="tools-pills">
+        <a class="tool-pill" href="https://www.audinate.com/" target="_blank">Dante</a>
+        <a class="tool-pill" href="https://rogueamoeba.com/loopback/" target="_blank">Loopback</a>
+        <a class="tool-pill" href="https://rogueamoeba.com/audiohijack/" target="_blank">Audio Hijack</a>
+        <a class="tool-pill" href="https://youlean.co/" target="_blank">Youlean Loudness Meter</a>
+      </div>
+    </div>
+
+    <div>
+      <div class="tool-cat-label" data-en>Intercom & Communication</div>
+      <div class="tool-cat-label" data-de>Interkom & Kommunikation</div>
+      <div class="tools-pills">
+        <a class="tool-pill" href="https://www.unityintercom.com/" target="_blank">Unity Intercom</a>
+        <a class="tool-pill" href="https://spacecommz.com/" target="_blank">Spacecommz</a>
+        <a class="tool-pill" href="https://zoom.us/" target="_blank">Zoom</a>
+      </div>
+    </div>
+
+    <div>
+      <div class="tool-cat-label" data-en>Graphics & Creative</div>
+      <div class="tool-cat-label" data-de>Grafik & Kreatives</div>
+      <div class="tools-pills">
+        <a class="tool-pill" href="https://troikatronix.com/" target="_blank">Isadora</a>
+        <a class="tool-pill" href="https://www.adobe.com/products/photoshop.html" target="_blank">Photoshop</a>
+        <a class="tool-pill" href="https://affinity.serif.com/photo/" target="_blank">Affinity Photo</a>
+      </div>
+    </div>
+
+    <div>
+      <div class="tool-cat-label" data-en>Show Control</div>
+      <div class="tool-cat-label" data-de>Show-Steuerung</div>
+      <div class="tools-pills">
+        <a class="tool-pill" href="https://bitfocus.io/companion" target="_blank">Bitfocus Companion</a>
+        <a class="tool-pill" href="https://stagetimer.io/" target="_blank">Stagetimer</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="divider">
+
 <!-- COMMUNITY -->
 <section id="community">
   <p class="section-label" data-en>Community</p>
@@ -719,10 +872,205 @@
   <h2 data-en>Connected globally</h2>
   <h2 data-de>Global vernetzt</h2>
   <div class="community-box">
-    <p data-en>In late 2020, stuck at home like the rest of the world, I joined a Zoom call that turned into a community. <a href="https://www.youtube.com/@OfficeHoursGlobal" target="_blank">OfficeHours Global</a> is a daily gathering of event, media and production professionals from around the world — sharing knowledge, asking questions, figuring things out together.</p>
-    <p data-de>Ende 2020, zu Hause festgehalten wie der Rest der Welt, nahm ich an einem Zoom-Call teil, der sich zu einer Gemeinschaft entwickelte. <a href="https://www.youtube.com/@OfficeHoursGlobal" target="_blank">OfficeHours Global</a> ist ein tägliches Treffen von Event-, Medien- und Produktionsprofis aus aller Welt.</p>
+    <p data-en>In mid 2020, stuck at home like the rest of the world, I joined a Zoom call that turned into a community. <a href="https://www.youtube.com/@OfficeHoursGlobal" target="_blank">OfficeHours Global</a> is a daily gathering of event, media and production professionals from around the world — sharing knowledge, asking questions, figuring things out together.</p>
+    <p data-de>Mitte 2020, zu Hause festgehalten wie der Rest der Welt, nahm ich an einem Zoom-Call teil, der sich zu einer Gemeinschaft entwickelte. <a href="https://www.youtube.com/@OfficeHoursGlobal" target="_blank">OfficeHours Global</a> ist ein tägliches Treffen von Event-, Medien- und Produktionsprofis aus aller Welt.</p>
     <p data-en>What started as asking questions turned into running the show. Through OfficeHours I learned cameras, streaming, mimoLive, vMix, Bitfocus Companion — and made real friendships that crossed the Atlantic. Tlaloc Lopez Waterman and L-Wilson Spiro came to Berlin. We ended up at Märkisches Museum U-Bahn station at some point, which feels about right.</p>
     <p data-de>Was als Fragen stellen begann, wurde zum Fahren der Show. Durch OfficeHours lernte ich Kameras, Streaming, mimoLive, vMix, Bitfocus Companion — und knüpfte echte Freundschaften. Tlaloc Lopez Waterman und L-Wilson Spiro kamen nach Berlin. Irgendwie landeten wir am U-Bahnhof Märkisches Museum.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- LINKS -->
+<section id="links">
+  <p class="section-label" data-en>Links</p>
+  <p class="section-label" data-de>Links</p>
+  <h2 data-en>Links I like</h2>
+  <h2 data-de>Links, die ich mag</h2>
+
+  <div class="links-sub-label" data-en>Websites</div>
+  <div class="links-sub-label" data-de>Websites</div>
+  <div class="links-grid">
+    <a class="link-card" href="https://www.brunsviga-kulturzentrum.de/" target="_blank">
+      <span class="link-card-icon">🏛️</span>
+      <span class="link-card-text">
+        <span class="link-card-name">Brunsviga</span>
+        <span class="link-card-domain">brunsviga-kulturzentrum.de</span>
+      </span>
+    </a>
+    <a class="link-card" href="https://www.scheinbar.de/" target="_blank">
+      <span class="link-card-icon">🎭</span>
+      <span class="link-card-text">
+        <span class="link-card-name">Scheinbar</span>
+        <span class="link-card-domain">scheinbar.de</span>
+      </span>
+    </a>
+    <a class="link-card" href="https://mediapool.berlin/" target="_blank">
+      <span class="link-card-icon">📡</span>
+      <span class="link-card-text">
+        <span class="link-card-name">mediapool.berlin</span>
+        <span class="link-card-domain">mediapool.berlin</span>
+      </span>
+    </a>
+    <a class="link-card" href="https://officehours.global/" target="_blank">
+      <span class="link-card-icon">🌐</span>
+      <span class="link-card-text">
+        <span class="link-card-name">Office Hours Global</span>
+        <span class="link-card-domain">officehours.global</span>
+      </span>
+    </a>
+    <a class="link-card" href="https://www.boxengross.de/" target="_blank">
+      <span class="link-card-icon">📦</span>
+      <span class="link-card-text">
+        <span class="link-card-name">Boxengross</span>
+        <span class="link-card-domain">boxengross.de</span>
+      </span>
+    </a>
+    <a class="link-card" href="https://www.martin-perscheid.de/" target="_blank">
+      <span class="link-card-icon">🎨</span>
+      <span class="link-card-text">
+        <span class="link-card-name">Martin Perscheid</span>
+        <span class="link-card-domain">martin-perscheid.de</span>
+      </span>
+    </a>
+    <a class="link-card" href="https://www.zozoville.com/" target="_blank">
+      <span class="link-card-icon">🎨</span>
+      <span class="link-card-text">
+        <span class="link-card-name">Zozoville</span>
+        <span class="link-card-domain">zozoville.com</span>
+      </span>
+    </a>
+    <a class="link-card" href="https://berlin-gegen-nazis.de/tierarztpraxis-anke-meeuw/" target="_blank">
+      <span class="link-card-icon">🐾</span>
+      <span class="link-card-text">
+        <span class="link-card-name">Tierarztpraxis Anke Meeuw</span>
+        <span class="link-card-domain">berlin-gegen-nazis.de</span>
+      </span>
+    </a>
+    <a class="link-card" href="https://chrissabato.com/" target="_blank">
+      <span class="link-card-icon">💻</span>
+      <span class="link-card-text">
+        <span class="link-card-name">Chris Sabato</span>
+        <span class="link-card-domain">chrissabato.com</span>
+      </span>
+    </a>
+  </div>
+
+  <div class="links-sub-label" data-en>YouTube Channels</div>
+  <div class="links-sub-label" data-de>YouTube-Kanäle</div>
+  <div class="links-grid">
+    <a class="link-card yt" href="https://www.youtube.com/@OfficeHoursGlobal" target="_blank">
+      <span class="link-card-icon">▶</span>
+      <span class="link-card-text">
+        <span class="link-card-name">Office Hours Global</span>
+        <span class="link-card-domain">@OfficeHoursGlobal</span>
+      </span>
+    </a>
+    <a class="link-card yt" href="https://www.youtube.com/@chrissabato" target="_blank">
+      <span class="link-card-icon">▶</span>
+      <span class="link-card-text">
+        <span class="link-card-name">Chris Sabato</span>
+        <span class="link-card-domain">@chrissabato</span>
+      </span>
+    </a>
+    <a class="link-card yt" href="https://www.youtube.com/@aaronpk" target="_blank">
+      <span class="link-card-icon">▶</span>
+      <span class="link-card-text">
+        <span class="link-card-name">Aaron Parecki</span>
+        <span class="link-card-domain">@aaronpk</span>
+      </span>
+    </a>
+    <a class="link-card yt" href="https://www.youtube.com/@heretorecord" target="_blank">
+      <span class="link-card-icon">▶</span>
+      <span class="link-card-text">
+        <span class="link-card-name">Here to Record</span>
+        <span class="link-card-domain">@heretorecord</span>
+      </span>
+    </a>
+    <a class="link-card yt" href="https://www.youtube.com/@AdamTow" target="_blank">
+      <span class="link-card-icon">▶</span>
+      <span class="link-card-text">
+        <span class="link-card-name">Adam Tow</span>
+        <span class="link-card-domain">@AdamTow</span>
+      </span>
+    </a>
+    <a class="link-card yt" href="https://www.youtube.com/@PhotoJoseph" target="_blank">
+      <span class="link-card-icon">▶</span>
+      <span class="link-card-text">
+        <span class="link-card-name">PhotoJoseph</span>
+        <span class="link-card-domain">@PhotoJoseph</span>
+      </span>
+    </a>
+    <a class="link-card yt" href="https://www.youtube.com/@liveproductionmastery" target="_blank">
+      <span class="link-card-icon">▶</span>
+      <span class="link-card-text">
+        <span class="link-card-name">Live Production Mastery</span>
+        <span class="link-card-domain">@liveproductionmastery</span>
+      </span>
+    </a>
+    <a class="link-card yt" href="https://www.youtube.com/@veritasium" target="_blank">
+      <span class="link-card-icon">▶</span>
+      <span class="link-card-text">
+        <span class="link-card-name">Veritasium</span>
+        <span class="link-card-domain">@veritasium</span>
+      </span>
+    </a>
+    <a class="link-card yt" href="https://www.youtube.com/@tested" target="_blank">
+      <span class="link-card-icon">▶</span>
+      <span class="link-card-text">
+        <span class="link-card-name">Adam Savage's Tested</span>
+        <span class="link-card-domain">@tested</span>
+      </span>
+    </a>
+    <a class="link-card yt" href="https://www.youtube.com/@StarTalk" target="_blank">
+      <span class="link-card-icon">▶</span>
+      <span class="link-card-text">
+        <span class="link-card-name">StarTalk — Neil deGrasse Tyson</span>
+        <span class="link-card-domain">@StarTalk</span>
+      </span>
+    </a>
+    <a class="link-card yt" href="https://www.youtube.com/@MacBreakWeekly" target="_blank">
+      <span class="link-card-icon">▶</span>
+      <span class="link-card-text">
+        <span class="link-card-name">MacBreak Weekly</span>
+        <span class="link-card-domain">@MacBreakWeekly</span>
+      </span>
+    </a>
+    <a class="link-card yt" href="https://www.youtube.com/@Danny_MacAskill" target="_blank">
+      <span class="link-card-icon">▶</span>
+      <span class="link-card-text">
+        <span class="link-card-name">Danny MacAskill</span>
+        <span class="link-card-domain">@Danny_MacAskill</span>
+      </span>
+    </a>
+    <a class="link-card yt" href="https://www.youtube.com/@lisaholic_official" target="_blank">
+      <span class="link-card-icon">▶</span>
+      <span class="link-card-text">
+        <span class="link-card-name">lisaholic</span>
+        <span class="link-card-domain">@lisaholic_official</span>
+      </span>
+    </a>
+    <a class="link-card yt" href="https://www.youtube.com/@TED" target="_blank">
+      <span class="link-card-icon">▶</span>
+      <span class="link-card-text">
+        <span class="link-card-name">TED</span>
+        <span class="link-card-domain">@TED</span>
+      </span>
+    </a>
+    <a class="link-card yt" href="https://www.youtube.com/@DryBarComedy" target="_blank">
+      <span class="link-card-icon">▶</span>
+      <span class="link-card-text">
+        <span class="link-card-name">Dry Bar Comedy</span>
+        <span class="link-card-domain">@DryBarComedy</span>
+      </span>
+    </a>
+    <a class="link-card yt" href="https://www.youtube.com/@smartereveryday" target="_blank">
+      <span class="link-card-icon">▶</span>
+      <span class="link-card-text">
+        <span class="link-card-name">Smarter Every Day</span>
+        <span class="link-card-domain">@smartereveryday</span>
+      </span>
+    </a>
   </div>
 </section>
 
@@ -754,6 +1102,7 @@
   <p>André Doelle · Berlin · <a href="mailto:input@mail.de">input@mail.de</a></p>
   <p class="footer-sub" data-en>Made with Claude Code & a lot of Berliner Luft</p>
   <p class="footer-sub" data-de>Gemacht mit Claude Code & jeder Menge Berliner Luft</p>
+  <p class="footer-sub">Inspired by <a href="https://chrissabato.com/" target="_blank">Chris Sabato</a> &amp; <a href="https://officehours.global/" target="_blank">Office Hours Global</a></p>
 </footer>
 
 <!-- LIGHTBOX -->
